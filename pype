@@ -1,0 +1,19 @@
+node {
+   stage('Preparation') {
+git url: 'https://github.com/irfanops/WebDev.git', branch: 'master'
+sh 'rm -rf *'
+sh 'git clone https://github.com/irfanops/WebDev.git'
+sh 'wget https://raw.githubusercontent.com/irfanops/temp/master/Dockerfile'
+sh 'wget https://raw.githubusercontent.com/irfanops/temp/master/seltest.py'
+sh 'docker pull httpd'
+   }
+   stage('Build Docker Container') {
+sh 'docker build -t webserver .'
+   }
+   stage('Deploy Docker Container') {
+sh 'docker run -d --name website -p 80:80 webserver'
+   }
+    stage('Testing the webpage') {
+sh 'python seltest.py'
+   }
+}
