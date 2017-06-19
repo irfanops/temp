@@ -5,7 +5,7 @@ from pyvirtualdisplay import Display
 display = Display(visible=0, size=(800, 600))
 display.start()
 
-class TestUbuntuHomepage(unittest.TestCase):
+class TestWebpage(unittest.TestCase):
     
     def setUp(self):
         self.browser = webdriver.Firefox()
