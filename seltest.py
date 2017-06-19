@@ -11,8 +11,8 @@ class TestUbuntuHomepage(unittest.TestCase):
         self.browser = webdriver.Firefox()
         
     def testTitle(self):
-        self.browser.get('http://www.ubuntu.com/')
-        self.assertIn('Ubuntu', self.browser.title)
+        self.browser.get('http://localhost')
+        self.assertIn('Buildings', self.browser.title)
         
     def tearDown(self):
         self.browser.quit()
