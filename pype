@@ -1,19 +1,22 @@
+
 node {
-   stage('Preparation') {
+   stage('Bootstrapping') {
 git url: 'https://github.com/irfanops/WebDev.git', branch: 'master'
 sh 'rm -rf *'
 sh 'git clone https://github.com/irfanops/WebDev.git'
-sh 'wget https://raw.githubusercontent.com/irfanops/temp/master/Dockerfile'
-sh 'wget https://raw.githubusercontent.com/irfanops/temp/master/seltest.py'
+sh 'wget https://raw.githubusercontent.com/irfanops/presentation/blob/master/stopcontainers.sh'
+sh 'wget https://raw.githubusercontent.com/irfanops/presentation/blob/master/Dockerfile'
+sh 'wget https://raw.githubusercontent.com/irfanops/presentation/blob/master/seltest.py'
 sh 'docker pull httpd'
    }
    stage('Build Docker Container') {
 sh 'docker build -t webserver .'
    }
    stage('Deploy Docker Container') {
+sh 'bash stopcontainers.sh'       
 sh 'docker run -d --name website -p 80:80 webserver'
    }
-    stage('Testing the webpage') {
+    stage('Testing') {
 sh 'python seltest.py'
    }
 }
