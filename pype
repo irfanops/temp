@@ -4,9 +4,9 @@ node {
 git url: 'https://github.com/irfanops/WebDev.git', branch: 'master'
 sh 'rm -rf *'
 sh 'git clone https://github.com/irfanops/WebDev.git'
-sh 'wget https://raw.githubusercontent.com/irfanops/presentation/blob/master/stopcontainers.sh'
-sh 'wget https://raw.githubusercontent.com/irfanops/presentation/blob/master/Dockerfile'
-sh 'wget https://raw.githubusercontent.com/irfanops/presentation/blob/master/seltest.py'
+sh 'wget https://raw.githubusercontent.com/irfanops/presentation/master/stopcontainers.sh'
+sh 'wget https://raw.githubusercontent.com/irfanops/presentation/master/Dockerfile'
+sh 'wget https://raw.githubusercontent.com/irfanops/presentation/master/seltest.py'
 sh 'docker pull httpd'
    }
    stage('Build Docker Container') {
